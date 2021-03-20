@@ -23,14 +23,21 @@ const useStyles = makeStyles((theme)=>({
 
 }))
 
-
+const initialUserValues = {
+    email: '',
+    password: '',
+    password2: '',
+    phone:'',
+    gender: 'male',
+    fullName: '',    
+}
 
 
 const Home = () => {
 
     const classes = useStyles();
     // Extract useForm
-    const {values, setValues, handleInputChange, errors, setErrors,resetForm } = useForm()
+    const {values, setValues, handleInputChange, errors, setErrors,resetForm } = useForm(initialUserValues)
     //Handle popup
     const [openLoginPopup, setOpenLoginPopup] = useState(false)
     const [openRegisterPopup, setOpenRegisterPopup] = useState(false) 
@@ -95,12 +102,7 @@ const Home = () => {
                         <Controls.Button 
                             text='Sign up free!'
                             type ='submit'
-                        />                        
-                        
-                        <Controls.Button
-                            text='Reset'
-                            onClick={resetForm}
-                        />
+                        />     
                     </form>
                     
                     </Grid>                    

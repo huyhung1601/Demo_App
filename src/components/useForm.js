@@ -1,18 +1,11 @@
 import React, {useState} from 'react'
 import {makeStyles} from '@material-ui/core'
 
-const initialUserValues = {
-    email: '',
-    password: '',
-    password2: '',
-    phone:'',
-    gender: 'male',
-    fullName: '',    
-}
 
-export const useForm = () => {
 
-    const [ values, setValues] = useState(initialUserValues)
+export const useForm = (initialValues) => {
+
+    const [ values, setValues] = useState(initialValues)
     const [errors, setErrors] = useState({})
 
     const handleInputChange = e =>{
@@ -24,7 +17,7 @@ export const useForm = () => {
     }
 
     const resetForm = () =>{
-        setValues(initialUserValues);
+        setValues(initialValues);
         setErrors({})
     }
 
@@ -46,7 +39,7 @@ const useStyles = makeStyles((theme)=>({
             margin: theme.spacing(1),
         },
         '& .MuiButtonBase-root':{
-            margin: theme.spacing(2),
+            margin: theme.spacing(1),
             left: theme.spacing(1),
         }
     }
