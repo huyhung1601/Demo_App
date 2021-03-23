@@ -2,11 +2,10 @@ import { Button, Grid } from '@material-ui/core'
 import React from 'react'
 import Controls from '../../components/controls/Controls'
 import {Form} from '../../components/useForm'
-
-
+import {useHistory} from "react-router-dom";
 
 const LoginForm = (props) => {
-    
+    const history = useHistory();
     const {values,onChange,errors, setErrors, setOpenLoginPopup,resetForm,setOpenRegisterPopup} = props
 
 
@@ -28,6 +27,7 @@ const LoginForm = (props) => {
         window.alert(console.log(values.email, values.password ,'submitted'))
         setOpenLoginPopup(false)
         resetForm()
+        history.push('/admin');
         }
     }
     

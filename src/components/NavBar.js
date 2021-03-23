@@ -26,6 +26,7 @@ const NavBar = () => {
                     </Grid>
                     <Grid item>
                         <Controls.Input
+                            
                             InputProps={{
                                 startAdornment: (<InputAdornment position="start">
                                     <Search />
