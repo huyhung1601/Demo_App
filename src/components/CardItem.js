@@ -10,7 +10,7 @@ import {MoreVert } from '@material-ui/icons';
  */
 export const CardItem = ({ data, onChange }) => {
 
-    return (<Grid item >
+    return (<Grid item>
         <Controls.Input
             name='title'
             value={data.title}

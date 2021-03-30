@@ -8,6 +8,7 @@ import { Grid, Menu, MenuItem, } from '@material-ui/core';
 import {useForm, Form} from '../components/useForm'
 import {CardItem} from '../components/CardItem'
 import Tasks from '../components/Tasks';
+import DragAndDrop from './dashBoard/DragAndDrop';
 
 
 /** Data From server */
@@ -122,32 +123,20 @@ const DashBoar = () => {
                 subTitle='Follow up the task to get achievement'
             />        
             {addList}  
-                               
+            <pre><code>{JSON.stringify(taskList)}</code></pre>                   
             <Grid container spacing = {1} >
                 {taskList.map((item,index)=>(
-                    <Grid container xs={2} direction='column' spacing={1}>                                 
+                    <Grid container xs={3} direction='column' spacing={1}>                                 
                     <CardItem data={item} key={item.id} onChange={(value)=>updateTitle(item.id, value)}/>                    
                     <Tasks/>
+                    <Controls.Button
+                        text='Add Task'
+                    />
                     </Grid> 
-                    // <Grid item xs={2} key={item.id}>
-                    //     <Controls.Input
-                    //         name='title'
-                    //         value={item.title} 
-                    //         onChange={(e)=>updateTitle(item.id, e.target.value)}                         
-                    //         variant='filled'
-                    //         InputProps={{
-                    //             endAdornment: 
-                    //             <InputAdornment position="top">
-                    //                 <IconButton onClick={()=>updateTitle(item.id, item.title)}>
-                    //                     <MoreVert/>
-                    //                 </IconButton>
-                    //             </InputAdornment>                           
-                    //         }}
-                    //     />
-                    // </Grid>
                 ))}
-            </Grid>        
-            <pre><code>{JSON.stringify(taskList)}</code></pre>
+            </Grid> 
+            <DragAndDrop/>       
+            
             
         </>
     )

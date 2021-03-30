@@ -1,10 +1,14 @@
-import { Grid } from '@material-ui/core'
+import { Grid, Typography } from '@material-ui/core'
 import React from 'react'
 
-const Tasks = () => {
+const Tasks = (props) => {
     return (
-        <Grid item xs={2}>
-            Hello
+        <Grid item >
+            <div>
+            <Typography>Task1</Typography>
+            </div>
+            
+
         </Grid>
     )
 }

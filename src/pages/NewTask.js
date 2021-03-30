@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {Grid, IconButton, FormControlLabel, Checkbox,Typography, FormGroup,InputAdornment} from '@material-ui/core'
+import React, {useState, useEffect} from 'react'
+import {Grid, IconButton, FormControlLabel, Checkbox,Typography, FormGroup,InputAdornment, MobileStepper} from '@material-ui/core'
 import Controls from '../components/controls/Controls'
 import { Form, useForm } from '../components/useForm'
 import AssignmentIcon from '@material-ui/icons/Assignment';
@@ -91,6 +91,14 @@ const NewTask = () => {
      */
     const [checklistMenuAnchorEl, setChecklistMenuAnchoEl] = useState(null);
     const [checklist, setChecklist] = useState([{title: 'Hello', align: false}])
+    const [activeStep, setActiveStep] = useState(0)
+    const checklistLength = (checklist.length + 1).toString()
+    
+    useEffect(()=>{
+        const length = (checklist.filter((x,index)=>x.align == true)).length
+        setActiveStep(length)        
+    }, checklist);
+
     const onAddMenu = (value) => {
         const createItem ={title : value, align: false}
         const newChecklist = [...checklist,createItem]
@@ -98,8 +106,8 @@ const NewTask = () => {
     }  
     
     const handleAlignChecklist = (id, checked)=>{
-        const checkChecklist=checklist.map((x,index)=>id==index?{...x, align: checked,}:x)
-        setChecklist(checkChecklist)
+        const updateChecklist=checklist.map((x,index)=>id==index?{...x, align: checked,}:x)        
+        setChecklist(updateChecklist)
     }
 
 
@@ -155,8 +163,10 @@ const NewTask = () => {
                </Grid>
                <Grid item xs={9} container>
                     <Grid item xs={1}/>
-                    <Grid item xs={11}>                        
-                        <Typography>MEMBERS</Typography>
+                    <Grid item xs={11}>
+                        {
+                            alignMember.length != 0 && (<Typography>MEMBERS</Typography>)                            
+                        }       
                         <FormGroup row>
                         {
                             alignMember.map((item,index)=>(
@@ -192,7 +202,17 @@ const NewTask = () => {
                     </Grid>
                     <Grid item xs={11} >
                         <div>
-                        <Typography>Checklist</Typography>
+                            { 
+                                checklist !='' && <Typography>Checklist</Typography>
+                            }
+                        
+                        <MobileStepper
+                            variant='progress'
+                            steps={checklistLength}
+                            position='static'
+                            activeStep={activeStep}
+                            LinearProgressProps='Hello'
+                        />
                         <FormGroup>
                         {checklist.map((item,index)=>(
                         
