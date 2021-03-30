@@ -11,7 +11,7 @@ export default makeStyles((theme)=>({
         marginLeft: theme.spacing(2)
     },
     droppableCol:{
-        width: "100%", 
+        width: "80%%", 
         backgroundColor: 'gray',
         padding: theme.spacing(1),
         borderRadius: '7px',
@@ -28,5 +28,11 @@ export default makeStyles((theme)=>({
             backgroundColor: 'coral'
         }
     },
+    addTask: {
+        paddingTop: theme.spacing(1),
+    },
+    MuiButtonBase: {
+        marginLeft: theme.spacing(1)
+    }
 
 }))

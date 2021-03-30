@@ -91,19 +91,6 @@ const Home = () => {
                         Collaborate, manage projects, and reach new productivity peaks.
                         From high rises to the home office, the way your team works is unique—accomplish it all with Trello.
                     </Typography>
-                    <form onSubmit= {handleSubmit}>
-                        <Controls.Input 
-                            name = 'email'
-                            label = 'Email' 
-                            value = {values.email}
-                            onChange = {handleInputChange}
-                            error = {errors.email}
-                        />
-                        <Controls.Button 
-                            text='Sign up free!'
-                            type ='submit'
-                        />     
-                    </form>
                     
                     </Grid>                    
                     <Grid item  >
