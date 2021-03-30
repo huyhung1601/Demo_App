@@ -24,7 +24,6 @@ const LoginForm = (props) => {
     const handleLogin = (e) => {
         e.preventDefault()
         if (validate()){
-        window.alert(console.log(values.email, values.password ,'submitted'))
         setOpenLoginPopup(false)
         resetForm()
         history.push('/admin');
